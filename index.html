@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Television Interface</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="television">
+          <div class="screen" :class="{ 'off': isOn }">
+            <video :src="videoSource" :controls="isOn"></video>
+          </div>
+          <div class="buttons">
+            <button @click="changeVideo(-1)" :disabled="!isOn">Previous</button>
+            <button @click="togglePower">{{ isOn ? 'Turn Off' : 'Turn On' }}</button>
+            <button @click="changeVideo(1)" :disabled="!isOn">Next</button>
+            <button @click="togglePlayPause" :disabled="!isOn">{{ isPlaying ? 'Pause' : 'Play' }}</button>
+          </div>
+        </div>
+      </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.6/dist/vue.global.prod.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
